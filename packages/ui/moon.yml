@@ -19,8 +19,5 @@ tasks:
   dev:
     command: 'pnpm run dev'
 
-  test/integration:
-    command: 'pnpm run test:integration'
-
   test/unit:
     command: 'pnpm run test:unit --run'
