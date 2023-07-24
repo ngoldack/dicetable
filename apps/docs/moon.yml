@@ -4,22 +4,36 @@ type: "application"
 language: "typescript"
 
 tasks:
+  write-translations:
+    command: "pnpm run write-translations"
+    inputs:
+      - "src/**/*"
+      - docusaurus.config.js
+      - sidabars.js
+
+  write-heading-ids:
+    command: "pnpm run write-heading-ids"
+    inputs:
+      - "src/**/*"
+      - docusaurus.config.js
+      - sidabars.js
+
   build:
-    command: "docusaurus build"
-    inputs: 
+    deps:
+      - "~:write-translations"
+      - "~:write-heading-ids"
+    command: "pnpm run build"
+    inputs:
       - "src/**/*"
       - docusaurus.config.js
       - sidabars.js
       - tsconfig.json
       - package.json
 
-
   dev:
-    command:
-      - "docusaurus"
-      - "start"
+    command: "pnpm run start"
 
   start:
-    command:
-      - "docusaurus"
-      - "serve"
+    deps:
+      - "~:build"
+    command: "pnpm run serve"
