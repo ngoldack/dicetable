@@ -1,19 +1,15 @@
 $schema: 'https://moonrepo.dev/schemas/project.json'
 
-type: 'application'
+type: 'library'
 language: 'typescript'
-
-dependsOn:
-  - 'ui'
 
 tasks:
   check:
     command: 'pnpm run check'
   build:
-    command: 'pnpm run build'
     deps:
       - '~:check'
-      - 'ui:build'
+    command: 'pnpm run build'
     inputs:
       - 'src/**/*'
       - package.json
@@ -22,3 +18,9 @@ tasks:
 
   dev:
     command: 'pnpm run dev'
+
+  test/integration:
+    command: 'pnpm run test:integration'
+
+  test/unit:
+    command: 'pnpm run test:unit --run'
