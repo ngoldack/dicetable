@@ -1,0 +1,20 @@
+$schema: 'https://moonrepo.dev/schemas/project.json'
+
+type: 'application'
+language: 'typescript'
+
+tasks:
+  check:
+    command: 'pnpm run check'
+  build:
+    command: 'pnpm run build'
+    deps:
+      - '~:check'
+    inputs:
+      - 'src/**/*'
+      - package.json
+    outputs:
+      - '.svelte-kit/output/**/*'
+
+  dev:
+    command: 'pnpm run dev'

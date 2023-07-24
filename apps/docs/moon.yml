@@ -1,0 +1,25 @@
+$schema: "https://moonrepo.dev/schemas/project.json"
+
+type: "application"
+language: "typescript"
+
+tasks:
+  build:
+    command: "docusaurus build"
+    inputs: 
+      - "src/**/*"
+      - docusaurus.config.js
+      - sidabars.js
+      - tsconfig.json
+      - package.json
+
+
+  dev:
+    command:
+      - "docusaurus"
+      - "start"
+
+  start:
+    command:
+      - "docusaurus"
+      - "serve"
